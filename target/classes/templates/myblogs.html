@@ -38,6 +38,7 @@
 						<th>Heading</th>
 						<th>Blog</th>
 						<th>Description</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,7 +49,11 @@
                             <p th:text="${blog.bloggedDate}"></p>
                             <p th:text="${blog.blogger}"></p>
                         </td>
-						
+						<td>
+							<a th:href="@{/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
+							
+							<a th:href="@{/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
+						</td>
 					</tr>
 				</tbody>
 				

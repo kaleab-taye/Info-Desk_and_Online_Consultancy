@@ -14,18 +14,20 @@
 		
 			<h3>Register A User</h3>
 			<hr/>
-			
-            <th>userName</th>
+			<th>Last Name</th>
+
+            <th>First Name</th>
             <th>password</th>
-            <th>credential</th>
+            <th>email</th>
             <th>type</th>
 
-			<form th:action="@{/saveUser}" th:object="${user}" method="POST">
+			<form th:action="@{/admin/usersList/addUserForm/saveUser}" th:object="${user}" method="POST">
 
-                <input type="text" th:field="*{userName}" class="form-control col-4 mb-4" placeholder="UserName" />
-								
+                <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" />
+				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" />
+
 				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
-                <input type="text" th:field="*{credential}" class="form-control col-4 mb-4" placeholder="Input Some Description About Yourself." />
+                <input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Input Some Description About Yourself." />
 				<input type="text" th:field="*{type}" class="form-control col-4 mb-4" placeholder="Access Level" />
 				
 				<button type="submit" class="btn btn-primary col-2">Save</button>
@@ -37,7 +39,7 @@
 				
 			</form>
 			<hr/>
-			<a th:href="@{/usersList}">Back to list</a>
+			<a th:href="@{/admin/usersList}">Back to list</a>
 		</div>
 		
 	</body>

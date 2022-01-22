@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
 	<head>
-		<title>Blogs</title>
+		<title>Ulogs</title>
 		
 		<link rel="stylesheet" 
 			type="text/css" 
@@ -18,28 +18,31 @@
 		
 			<h3>Users</h3>
             <hr/>
-			<a th:href="@{/addUserForm}" class="btn btn-primary">Add User</a>
+			<a th:href="@{/admin/usersList/addUserForm}" class="btn btn-primary">Add User</a>
 			<br/><br/>
 			<table class="table table-bordered table-striped" id="usersTable">
 			
 				<thead>
 					<tr>
-						<th>userName</th>
-						<th>password</th>
-						<th>credential</th>
-						<th>type</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Password</th>
+						<th>Type</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
                 <tbody>
-					<tr th:each="user: ${user}">
-						<td th:text="${user.userName}">Sample Name</td>
+					<tr th:each="user: ${users}">
+						<td th:text="${user.firstName}">Sample Name</td>
+						<td th:text="${user.lastName}">Sample Name</td>
+						<td th:text="${user.email}">Sample Name</td>
 						<td th:text="${user.password}" >Sample Blog</td>
-						<td th:text="${user.credential}"> Sample credential</td>
-                        <td th:text="${user.type}">Sample Type</td>
+                        <td >Sample Type</td>
 						<td>
-							<a th:href="@{/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Alter</a>
+							<a th:href="@{/admin/usersList/showUserUpdateForm(userId=${user.userId})}" class="btn btn-info">Alter</a>
 							
-							<a th:href="@{/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
+							<a th:href="@{/admin/usersList/deleteUser(userId=${user.userId})}" class="btn btn-danger ml-2">Delete</a>
 						</td>
 					</tr>
 				</tbody>

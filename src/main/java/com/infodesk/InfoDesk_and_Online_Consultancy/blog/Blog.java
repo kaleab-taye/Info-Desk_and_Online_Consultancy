@@ -23,7 +23,7 @@ public class Blog {
     private Long id;
 
     private String heading;
-    private String blogger;
+    private Long blogger;
     private String blogContent;
     private Date bloggedDate;
 

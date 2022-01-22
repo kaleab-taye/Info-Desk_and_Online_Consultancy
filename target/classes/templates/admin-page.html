@@ -22,37 +22,17 @@
 			<div sec:authorize="isAuthenticated()">
 			<h3>Welcome <span sec:authentication="user.first_name"></span></h3>
 			<div>
-			<a th:href="@{/addBlogForm}" class="btn btn-primary">Add Blog</a>
-			<a th:href="@{/myblogs}" class="btn btn-primary">My Blogs</a>
+			<a th:href="@{/admin/usersList}" class="btn btn-primary">Manage Users</a>
+			<a th:href="@{/admin/blogs-list}" class="btn btn-primary">Manage Blogs</a>
 			<br>
+            <br>
 			<form th:action="@{/logout}" method="post">
 				<input type="submit" value="Logout" class=" btn-primary"/>
 			</form>
 			</div>
 			</div>
 			<br/><br/>
-			<table class="table table-bordered table-striped" id="blogTable">
 			
-				<thead>
-					<tr>
-						<th>Heading</th>
-						<th>Blog</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="blog: ${blogs}">
-						<td th:text="${blog.Heading}">Sample Name</td>
-						<td th:text="${blog.blogContent}" >Sample Blog</td>
-						<td > 
-                            <p th:text="${blog.bloggedDate}"></p>
-                            <p th:text="${blog.blogger}"></p>
-                        </td>
-						
-					</tr>
-				</tbody>
-				
-			</table>
 		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

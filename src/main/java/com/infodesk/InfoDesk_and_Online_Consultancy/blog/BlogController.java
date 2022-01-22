@@ -1,5 +1,9 @@
 package com.infodesk.InfoDesk_and_Online_Consultancy.blog;
 
+// import com.infodesk.InfoDesk_and_Online_Consultancy.user.UserDetailsServiceImpl;
+
+
+// import com.infodesk.InfoDesk_and_Online_Consultancy.user.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +38,23 @@ public class BlogController {
 		mav.addObject("blog", newBlog);
 		return mav;
 	}
+
+	@GetMapping({"/admin/blogs-list"})
+	public ModelAndView getAdminBlogs() {
+		ModelAndView mav = new ModelAndView("admin-blogs");
+		mav.addObject("blogs", blogRepo.findAll());
+		return mav;
+	}
+
+	
+
+	// @GetMapping("/myblogs")
+	// public ModelAndView myblogs() {
+	// 	ModelAndView mav = new ModelAndView("myblogs");
+	// 	Blog newBlog = blogRepo.findAllById(currentUser).get();
+	// 	mav.addObject("blog", newBlog);
+	// 	return mav;
+	// }
 	
 	@PostMapping("/saveBlog")
 	public String saveBlog(@ModelAttribute Blog blog) {
