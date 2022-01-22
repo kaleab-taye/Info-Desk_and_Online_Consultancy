@@ -16,48 +16,44 @@
 		
 		<div class="container">
 		
-			<h3>Blogs</h3>
-			
-			<hr/>
-			<a th:href="@{/addBlogForm}" class="btn btn-primary">Add Blog</a>
+			<h3>Users</h3>
+            <hr/>
+			<a th:href="@{/addUserForm}" class="btn btn-primary">Add User</a>
 			<br/><br/>
-			<table class="table table-bordered table-striped" id="blogTable">
+			<table class="table table-bordered table-striped" id="usersTable">
 			
 				<thead>
 					<tr>
-						<th>Heading</th>
-						<th>Blog</th>
-						<th>Description</th>
-						<th>Actions</th>
+						<th>userName</th>
+						<th>password</th>
+						<th>credential</th>
+						<th>type</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr th:each="blog: ${blogs}">
-						<td th:text="${blog.Heading}">Sample Name</td>
-						<td th:text="${blog.blogContent}" >Sample Blog</td>
-						<td > 
-                            <p th:text="${blog.bloggedDate}"></p>
-                            <p th:text="${blog.blogger}"></p>
-                        </td>
+                <tbody>
+					<tr th:each="user: ${user}">
+						<td th:text="${user.userName}">Sample Name</td>
+						<td th:text="${user.password}" >Sample Blog</td>
+						<td th:text="${user.credential}"> Sample credential</td>
+                        <td th:text="${user.type}">Sample Type</td>
 						<td>
-							<a th:href="@{/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
+							<a th:href="@{/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Alter</a>
 							
 							<a th:href="@{/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
 						</td>
 					</tr>
 				</tbody>
-				
-			</table>
+            </table>
 		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$("#blogTable").DataTable({
+				$("#usersTable").DataTable({
 						'aoColumnDefs': [{
         				'bSortable': false,
-        				'aTargets': [-1] /* 1st one, start by the right */
+        				'aTargets': [-3] /* 1st one, start by the right */
     				}]
 				});
 			})

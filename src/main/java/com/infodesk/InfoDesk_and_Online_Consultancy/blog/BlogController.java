@@ -20,7 +20,7 @@ public class BlogController {
 	@Autowired
 	private BlogRepository blogRepo;
 	
-	@GetMapping({"/list", "/"})
+	@GetMapping({"/list"})
 	public ModelAndView getAllBlogs() {
 		ModelAndView mav = new ModelAndView("list-blogs");
 		mav.addObject("blogs", blogRepo.findAll());
@@ -42,12 +42,20 @@ public class BlogController {
 	}
 	
 	@GetMapping("/showUpdateForm")
-	public ModelAndView showUpdateForm(@RequestParam Long BlogId) {
-		ModelAndView mav = new ModelAndView("add-Blog-form");
-		Blog Blog = blogRepo.findById(BlogId).get();
-		mav.addObject("Blog", Blog);
+	public ModelAndView showUpdateForm(@RequestParam Long blogId) {
+		ModelAndView mav = new ModelAndView("add-blog-form");
+		Blog blog = blogRepo.findById(blogId).get();
+		mav.addObject("blog", blog);
 		return mav;
 	}
+
+	// @GetMapping({"/listMyBlogs"})
+	// public ModelAndView getMyBlogs(@RequestParam String blogger) {
+	// 	ModelAndView mav = new ModelAndView("list-blogs");
+	// 	Blog blog = blogRepo.findAllByBlogger(blogger).get();
+	// 	mav.addObject("blog", blog);
+	// 	return mav;
+	// }
 	
 	@GetMapping("/deleteBlog")
 	public String deleteBlog(@RequestParam Long blogId) {

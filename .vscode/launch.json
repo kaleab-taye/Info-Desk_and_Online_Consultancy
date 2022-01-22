@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-InfoDeskAndOnlineConsultancyApplication<Info-Desk_and_Online_Consultancy>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.infodesk.InfoDesk_and_Online_Consultancy.InfoDeskAndOnlineConsultancyApplication",
+            "projectName": "Info-Desk_and_Online_Consultancy",
+            "args": ""
+        }
+    ]
+}
