@@ -1,0 +1,67 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>Blogs</title>
+		
+		<link rel="stylesheet" 
+			type="text/css" 
+			href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css" />
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	
+	<body>
+		
+		<div class="container">
+		
+			<h3>Blogs</h3>
+			
+			<hr/>
+			<a th:href="@{/addBlogForm}" class="btn btn-primary">Add Blog</a>
+			<br/><br/>
+			<table class="table table-bordered table-striped" id="blogTable">
+			
+				<thead>
+					<tr>
+						<th>Heading</th>
+						<th>Blog</th>
+						<th>Description</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="blog: ${blogs}">
+						<td th:text="${blog.Heading}">Sample Name</td>
+						<td th:text="${blog.blogContent}" >Sample Blog</td>
+						<td > 
+                            <p th:text="${blog.bloggedDate}"></p>
+                            <p th:text="${blog.blogger}"></p>
+                        </td>
+						<td>
+							<a th:href="@{/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
+							
+							<a th:href="@{/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#blogTable").DataTable({
+						'aoColumnDefs': [{
+        				'bSortable': false,
+        				'aTargets': [-1] /* 1st one, start by the right */
+    				}]
+				});
+			})
+		</script>
+	</body>
+	
+</html>

@@ -1,0 +1,44 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Register User</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		
+		<div class="container">
+		
+			<h3>Register A User</h3>
+			<hr/>
+			
+            <th>userName</th>
+            <th>password</th>
+            <th>credential</th>
+            <th>type</th>
+
+			<form th:action="@{/saveUser}" th:object="${user}" method="POST">
+
+                <input type="text" th:field="*{userName}" class="form-control col-4 mb-4" placeholder="UserName" />
+								
+				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
+                <input type="text" th:field="*{credential}" class="form-control col-4 mb-4" placeholder="Input Some Description About Yourself." />
+				<input type="text" th:field="*{type}" class="form-control col-4 mb-4" placeholder="Access Level" />
+				
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+				<input type="hidden" th:field="*{userId}" />
+				<!-- <input type="hidden" th:field="*{blogger}" />
+                <input type="hidden" th:field="*{bloggedDate}" /> -->
+
+
+				
+			</form>
+			<hr/>
+			<a th:href="@{/usersList}">Back to list</a>
+		</div>
+		
+	</body>
+</html>
