@@ -13,22 +13,24 @@
 		<div class="container">
 		
 			<h3>Register A User</h3>
+			<div>
+				<br>
+				<INPut:button action="action" type="button" onclick="history.go(-1);" class="form-control col-4 mb-4">goto Previous Page </INPut:button>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" class=" btn-primary"/>
+				</form>
+			</div>
 			<hr/>
-			<th>Last Name</th>
-
-            <th>First Name</th>
-            <th>password</th>
-            <th>email</th>
-            <th>type</th>
-
 			<form th:action="@{/admin/usersList/addUserForm/saveUser}" th:object="${user}" method="POST">
-
+				<p>First Name</p>
                 <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" />
+				<th>Last Name</th>
 				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" />
-
+				<th>password</th>
 				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
-                <input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Input Some Description About Yourself." />
-				<input type="text" th:field="*{type}" class="form-control col-4 mb-4" placeholder="Access Level" />
+				<th>email</th>
+				<input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email." />
+				<!-- <input type="text" th:field="*{roles}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " /> -->
 				
 				<button type="submit" class="btn btn-primary col-2">Save</button>
 				<input type="hidden" th:field="*{userId}" />

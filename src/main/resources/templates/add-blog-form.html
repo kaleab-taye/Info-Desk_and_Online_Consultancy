@@ -14,13 +14,23 @@
 		
 			<h3>Add New Blog</h3>
 			<hr/>
-			
+			<div>
+				<br>
+				<INPut:button action="action" type="button" onclick="history.go(-1);" class="form-control col-4 mb-4">goto Previous Page </INPut:button>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" class=" btn-primary"/>
+				</form>
+			</div>
+			<hr/>
 			<form th:action="@{/saveBlog}" th:object="${blog}" method="POST">
 
                 <input type="text" th:field="*{heading}" class="form-control col-4 mb-4" placeholder="Enter Heading" />
 								
 				<input type="text" th:field="*{blogContent}" class="form-control col-4 mb-4" placeholder="Blog Here!" />
-								
+					
+				<input type="text" th:field="*{bloggerEmail}" class="form-control col-4 mb-4" placeholder="put your email here! , make sure it is the one you registerd with" />
+
+
 				<button type="submit" class="btn btn-primary col-2">Save</button>
 				<input type="hidden" th:field="*{id}" />
 				<!-- <input type="hidden" th:field="*{blogger}" />

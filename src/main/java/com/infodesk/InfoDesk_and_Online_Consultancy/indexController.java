@@ -21,6 +21,19 @@ public class indexController {
         mav.addObject("blogs", blogsRepo.findAll());
 		return mav;
 	}
+
+	// @GetMapping({"/login"})
+	// public ModelAndView login() {
+	// 	ModelAndView mav = new ModelAndView("login");
+    //     mav.addObject("blogs", blogsRepo.findAll());
+	// 	return mav;
+	// }
+	// @GetMapping({"/login-page"})
+	// public ModelAndView login() {
+	// 	ModelAndView mav = new ModelAndView("login");
+    //     mav.addObject("blogs", blogsRepo.findAll());
+	// 	return mav;
+	// }
     
 }
 

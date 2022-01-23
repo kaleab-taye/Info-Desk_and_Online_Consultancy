@@ -20,14 +20,22 @@
 			
 			<hr/>
 			<div sec:authorize="isAuthenticated()">
-			<h3>Welcome <span sec:authentication="user.first_name"></span></h3>
+			<h3>Welcome <span sec:authentication="user.email">User</span></h3>
+
+			<div>
+				<br>
+				<INPut:button action="action" type="button" onclick="history.go(-1);" class="form-control col-4 mb-4">goto Previous Page </INPut:button>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" class=" btn-primary"/>
+				</form>
+			</div>			
+			<hr>
 			<div>
 			<a th:href="@{/addBlogForm}" class="btn btn-primary">Add Blog</a>
-			<a th:href="@{/myblogs}" class="btn btn-primary">My Blogs</a>
+			<a th:href="@{/myblogs}" class="btn btn-primary">Edit One Of My Blogs</a>
 			<br>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Logout" class=" btn-primary"/>
-			</form>
+			
+			
 			</div>
 			</div>
 			<br/><br/>
@@ -46,8 +54,10 @@
 						<td th:text="${blog.blogContent}" >Sample Blog</td>
 						<td > 
                             <p th:text="${blog.bloggedDate}"></p>
-                            <p th:text="${blog.blogger}"></p>
-                        </td>
+                            <p>blogged by: <span th:text="${blog.bloggerEmail}"> not specified</span></p>
+							<p>blog id: <span th:text="${blog.Id}"> not found</span></p>
+
+						</td>
 						
 					</tr>
 				</tbody>

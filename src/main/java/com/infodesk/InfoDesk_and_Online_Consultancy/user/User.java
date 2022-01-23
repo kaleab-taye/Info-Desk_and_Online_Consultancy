@@ -16,6 +16,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import javax.validation.constraints.Email;
+// import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,15 +37,25 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
+    @NotNull
+    @NotEmpty(message = "Email can not be empty")
     @Column(nullable = false, unique = true, length = 45)
+    @Email
     private String email;
 
-    @Column(name = "first_name", nullable = true, length = 20)
+    @NotNull
+    @NotEmpty(message = "First name can not be empty")
+    @Column(name = "first_name", nullable = false, length = 20)
     private String firstName;
 
+    @NotNull
+    @NotEmpty(message = "Password can not be empty")
     @Column(nullable = false, length = 64)
     private String password;
     
+
+    @NotNull
+    @NotEmpty(message = "Last name can not be empty")
     @Column(name = "last_name", nullable = true, length = 20)
     private String lastName;
 

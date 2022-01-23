@@ -6,6 +6,8 @@ package com.infodesk.InfoDesk_and_Online_Consultancy.blog;
 // import com.infodesk.InfoDesk_and_Online_Consultancy.user.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.security.core.Authentication;
+// import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,6 +41,14 @@ public class BlogController {
 		return mav;
 	}
 
+	@GetMapping("/admin/addBlogForm")
+	public ModelAndView adminAddBlogForm() {
+		ModelAndView mav = new ModelAndView("admin-add-blog-form");
+		Blog newBlog = new Blog();
+		mav.addObject("blog", newBlog);
+		return mav;
+	}
+
 	@GetMapping({"/admin/blogs-list"})
 	public ModelAndView getAdminBlogs() {
 		ModelAndView mav = new ModelAndView("admin-blogs");
@@ -61,10 +71,29 @@ public class BlogController {
 		blogRepo.save(blog);
 		return "redirect:/list";
 	}
+
+	@PostMapping("/admin/saveBlog")
+	public String adminsaveBlog(@ModelAttribute Blog blog) {
+		blogRepo.save(blog);
+		return "redirect:/admin/blogs-list";
+	}
 	
 	@GetMapping("/showUpdateForm")
 	public ModelAndView showUpdateForm(@RequestParam Long blogId) {
 		ModelAndView mav = new ModelAndView("add-blog-form");
+		Blog blog = blogRepo.findById(blogId).get();
+		mav.addObject("blog", blog);
+		return mav;
+	}
+
+	
+
+	// Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+
+	@GetMapping("/admin/showUpdateForm")
+	public ModelAndView adminShowUpdateForm(@RequestParam Long blogId) {
+		ModelAndView mav = new ModelAndView("admin-add-blog-form");
 		Blog blog = blogRepo.findById(blogId).get();
 		mav.addObject("blog", blog);
 		return mav;
@@ -82,6 +111,11 @@ public class BlogController {
 	public String deleteBlog(@RequestParam Long blogId) {
 		blogRepo.deleteById(blogId);
 		return "redirect:/list";
+	}
+	@GetMapping("/admin/deleteBlog")
+	public String adminDeleteBlog(@RequestParam Long blogId) {
+		blogRepo.deleteById(blogId);
+		return "redirect:/admin/blogs-list";
 	}
 }
 

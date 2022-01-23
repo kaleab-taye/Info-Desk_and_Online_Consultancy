@@ -18,6 +18,13 @@
 		
 			<h3>Users</h3>
             <hr/>
+			<div>
+				<br>
+				<INPut:button action="action" type="button" onclick="history.go(-1);" class="form-control col-4 mb-4">goto Previous Page </INPut:button>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" class=" btn-primary"/>
+				</form>
+			</div>
 			<a th:href="@{/admin/usersList/addUserForm}" class="btn btn-primary">Add User</a>
 			<br/><br/>
 			<table class="table table-bordered table-striped" id="usersTable">

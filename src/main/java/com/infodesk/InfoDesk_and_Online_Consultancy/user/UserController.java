@@ -1,8 +1,11 @@
 package com.infodesk.InfoDesk_and_Online_Consultancy.user;
 
+// import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+// import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,19 +76,7 @@ public class UserController {
 		return "redirect:/admin/usersList";
 	}
 
-	@PostMapping("/process_register")
-	public String saveUser(@ModelAttribute User user) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-		userRepo.save(user);
-		return "redirect:/register_success";
-	}
-	@GetMapping("/register_success")
-	public ModelAndView registerSuccess() {
-		ModelAndView mav = new ModelAndView("register_success");
-		return mav;
-	}
+
 	
 
     @GetMapping("/admin/deleteUser")

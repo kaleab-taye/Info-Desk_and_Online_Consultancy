@@ -1,68 +1,42 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="ISO-8859-1">
-    <title>Sign Up </title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="container text-center">
-        <div>
-            <h1>User Registration Form</h1>
-        </div>
-        <form th:action="@{/process_register}" th:object="${user}"
-            method="post" style="max-width: 600px; margin: 0 auto;">
-        <div class="m-3">
-            
-             
-            <div class="form-group row">
-                <label class="col-4 col-form-label">First Name: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{firstName}" class="form-control"
-                            required minlength="2" maxlength="20"/>
-                </div>
-            </div>
-             
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Last Name: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{lastName}" class="form-control"
-                            required minlength="2" maxlength="20" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-4 col-form-label">UserName: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{username}" class="form-control"
-                            required minlength="2" maxlength="20" />
-                </div>
-            </div>
-             
-            <div class="form-group row">
-                <label class="col-4 col-form-label">E-mail: </label>
-                <div class="col-8">
-                    <input type="email" th:field="*{email}" class="form-control" required />
-                </div>
-            </div>
-             
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Password: </label>
-                <div class="col-8">
-                    <input type="password" th:field="*{password}" class="form-control"
-                            required minlength="6" maxlength="10"/>
-                </div>
-            </div>
-            <br><br>
-            <div>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-                <!-- <input type="hidden" th:field="*{enabled}" th:value="${}" /> -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-            </div>
-        </div>
-        </form>
-    </div>
-</body>
+	<head>
+		<title>Register User</title>
+		
+		<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+	</head>
+	<body>
+		
+		<div class="container">
+		
+			<h3>Sign Up Form</h3>
+			
+			<hr/>
+			<form  action="#" th:action="@{/newRegisteredUser}" th:object="${user}" method="POST">
+				<p>First Name</p>
+                <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" />
+				<th>Last Name</th>
+				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" />
+                <!-- <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td> -->
+				<th>password</th>
+				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
+				<th>email</th>
+				<input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email." />
+				<!-- <input type="text" th:field="*{roles}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " /> -->
+				
+				<button type="submit" class="btn btn-primary col-2">Save</button>
+				<input type="hidden" th:field="*{userId}" />
+				<!-- <input type="hidden" th:field="*{blogger}" />
+                <input type="hidden" th:field="*{bloggedDate}" /> -->
+
+
+				
+			</form>
+			<hr/>
+		</div>
+		
+	</body>
 </html>
-

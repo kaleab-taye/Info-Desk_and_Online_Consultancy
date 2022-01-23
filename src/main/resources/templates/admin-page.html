@@ -21,14 +21,19 @@
 			<hr/>
 			<div sec:authorize="isAuthenticated()">
 			<h3>Welcome <span sec:authentication="user.first_name"></span></h3>
+
+			<div>
+				<br>
+				<INPut:button action="action" type="button" onclick="history.go(-1);" class="form-control col-4 mb-4">goto Previous Page </INPut:button>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" class=" btn-primary"/>
+				</form>
+			</div>
 			<div>
 			<a th:href="@{/admin/usersList}" class="btn btn-primary">Manage Users</a>
 			<a th:href="@{/admin/blogs-list}" class="btn btn-primary">Manage Blogs</a>
 			<br>
             <br>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Logout" class=" btn-primary"/>
-			</form>
 			</div>
 			</div>
 			<br/><br/>

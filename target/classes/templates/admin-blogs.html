@@ -21,14 +21,21 @@
 			<hr/>
 			<div sec:authorize="isAuthenticated()">
 			<h3>Welcome <span sec:authentication="user.first_name"></span></h3>
+
 			<div>
-			<a th:href="@{/addBlogForm}" class="btn btn-primary">Add Blog</a>
+				<br>
+				<INPut:button action="action" type="button" onclick="history.go(-1);" class="form-control col-4 mb-4">goto Previous Page </INPut:button>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" class=" btn-primary"/>
+				</form>
+			</div>
+			<hr>
+			<div>
+			<a th:href="@{/admin/addBlogForm}" class="btn btn-primary">Add Blog</a>
 			<a th:href="@{/myblogs}" class="btn btn-primary">My Blogs</a>
 			<br>
             <br>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Logout" class=" btn-primary"/>
-			</form>
+			
 			</div>
 			</div>
 			<br/><br/>
@@ -51,9 +58,9 @@
                             <p th:text="${blog.blogger}"></p>
                         </td>
 						<td>
-							<a th:href="@{/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
+							<a th:href="@{/admin/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
 							
-							<a th:href="@{/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
+							<a th:href="@{/admin/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
 						</td>
 					</tr>
 				</tbody>
