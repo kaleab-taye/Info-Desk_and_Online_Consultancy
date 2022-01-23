@@ -8,7 +8,7 @@ This project is done by the following 3rd year SiTE students
 -> Kaleab Tekalign UGR/3664/12 section 2
 -> Beka Dessalegn UGR/4605/12 Section 2
 
-
+!NB usage guideline provided at the end of the page
 
 
 
@@ -40,10 +40,26 @@ in addition to the procedural guidance this platform will provide users with the
 
 #We will be using the following to design our platform
 
->>spring boot framework will be used for the backend
+>>spring boot(MVC) framework will be used for the backend
 
 >>we will be using a relational database to store the files (specifically SQL), this is chosen because we will store only large text files for the blogs which are well structured and use relatively lower storage, and it is also well suited for our search functionality as it has more consistency and control over the contents of the text files
 
 >>we will be using spring security for authentication and authorization
 
 >>
+
+
+
+
+
+#useage guidlines
+>> users will be directed to the index page as soon as they open site
+>> users can access blogs posted on the site but they need an account to post any new ones
+>> it is not possible to have an admin account in the registration so to test that feature a person will need to to insert data on the database manually with the following format      with email address- 'testemail@email.com', and password- 'password' (you need an encryption for the password so it is recomended to use the password and email provided below)
+>> 
+>> INSERT INTO `users` (`first_name`,`last_name`,`email`, `password`, `enabled`) VALUES ('fisrname','lastname','testemail@email.com', '$2a$10$4xZlnU7Gpg/T2c1iCrIU9eZvFmcbE4PIeUAS7dJh/eTS0u2rRfin2', 1);
+>> 
+>> the password encryption is the following
+>> ...
+
+
