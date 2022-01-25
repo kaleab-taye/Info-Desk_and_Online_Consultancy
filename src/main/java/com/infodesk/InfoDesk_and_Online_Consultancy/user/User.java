@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import javax.validation.constraints.Email;
 // import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -37,26 +38,35 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
-    @NotNull
-    @NotEmpty(message = "Email can not be empty")
+//    @NotNull
+//    @NotEmpty(message = "Email can not be empty")
+//    @Column(nullable = false, unique = true, length = 45)
+//    @Email
+
+    @NotBlank(message = "Email is required")
     @Column(nullable = false, unique = true, length = 45)
-    @Email
     private String email;
 
-    @NotNull
-    @NotEmpty(message = "First name can not be empty")
-    @Column(name = "first_name", nullable = false, length = 20)
+//    @NotNull
+//    @NotEmpty(message = "First name can not be empty")
+//    @Column(name = "first_name", nullable = false, length = 20)
+
+    @NotBlank(message = "First name is required")
     private String firstName;
 
-    @NotNull
-    @NotEmpty(message = "Password can not be empty")
-    @Column(nullable = false, length = 64)
+//    @NotNull
+//    @NotEmpty(message = "Password can not be empty")
+//    @Column(nullable = false, length = 64)
+
+    @NotBlank(message = "Password is required")
     private String password;
     
 
-    @NotNull
-    @NotEmpty(message = "Last name can not be empty")
-    @Column(name = "last_name", nullable = true, length = 20)
+//    @NotNull
+//    @NotEmpty(message = "Last name can not be empty")
+//    @Column(name = "last_name", nullable = true, length = 20)
+
+    @NotBlank(message = "Last name is required")
     private String lastName;
 
     @Column(name = "full_name", nullable = true, length = 20)

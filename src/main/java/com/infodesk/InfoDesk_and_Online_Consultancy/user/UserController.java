@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 // import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,5 +84,29 @@ public class UserController {
 	public String deleteUser(@RequestParam Long userId) {
 		userRepo.deleteById(userId);
 		return "redirect:/admin/usersList";
+	}
+
+	@GetMapping("/reg")
+	public String reg(){
+		return "register_success";
+	}
+
+	@PostMapping("/newRegisteredUser")
+	public String saveUsers(@ModelAttribute User userNew, Errors errors) {
+
+		if (errors.hasErrors()){
+			return "signup_form";
+		}
+
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(userNew.getPassword());
+		userNew.setPassword(encodedPassword);
+		userRepo.save(userNew);
+		return "redirect:/reg";
+	}
+
+	@GetMapping("/practice")
+	public String res(){
+		return "signup_form";
 	}
 }

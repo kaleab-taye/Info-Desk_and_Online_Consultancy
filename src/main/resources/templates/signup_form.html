@@ -1,44 +1,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<title>Register User</title>
-		
-		<link rel="stylesheet" 
-			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
-			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
-			crossorigin="anonymous" />
-	</head>
-	<body>
-		
-		<div class="container">
-			<h1><strong>MEREJA</strong><i><small>info-desk</small></i></h1><br>
-		
-			<h3>Sign Up Form</h3>
+<head>
+	<title>Register User</title>
 
-			
-			<hr/>
-			<form  action="#" th:action="@{/newRegisteredUser}" th:object="${user}" method="POST">
-				<p>First Name</p>
-                <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" />
-				<th>Last Name</th>
-				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" />
-                <!-- <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td> -->
-				<th>password</th>
-				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
-				<th>email</th>
-				<input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email." />
-				<!-- <input type="text" th:field="*{roles}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " /> -->
-				
-				<button type="submit" class="btn btn-primary col-2">Save</button>
-				<input type="hidden" th:field="*{userId}" />
-				<!-- <input type="hidden" th:field="*{blogger}" />
-                <input type="hidden" th:field="*{bloggedDate}" /> -->
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		  integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+		  crossorigin="anonymous" />
+</head>
+<body>
 
+<div class="container">
 
-				
-			</form>
-			<hr/>
-		</div>
-		
-	</body>
+	<h3>Sign Up Form</h3>
+
+	<hr/>
+	<form  action="#" th:action="@{/newRegisteredUser}" th:object="${user}" method="POST">
+		<p>First Name</p>
+		<input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" required="" />
+		<th>Last Name</th>
+		<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" required=""/>
+		<!-- <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td> -->
+		<th>Email</th>
+		<input type="email" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email" required=""/>
+
+		<th>Password</th>
+		<input type="password" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" required=""/>
+		<!-- <input type="text" th:field="*{roles}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " /> -->
+
+		<input type="submit" class="btn btn-primary col-2" value="SIGNUP"/>
+		<input type="hidden" th:field="*{userId}" />
+		<!-- <input type="hidden" th:field="*{blogger}" />
+        <input type="hidden" th:field="*{bloggedDate}" /> -->
+
+	</form>
+	<hr/>
+</div>
+
+</body>
 </html>

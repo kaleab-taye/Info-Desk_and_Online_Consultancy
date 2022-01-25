@@ -39,15 +39,6 @@ public class MvcConfig implements WebMvcConfigurer {
     @Autowired
 	private UserRepository userRepo;
 
-    @PostMapping("/newRegisteredUser")
-	public String saveUsers(@ModelAttribute User userNew) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(userNew.getPassword());
-        userNew.setPassword(encodedPassword);
-		userRepo.save(userNew);
-		return "redirect:/register_success";
-	}
-
 	// @PostMapping("/newRegisteredUser")
 	// public String checkPersonInfo(@Valid User user, BindingResult bindingResult) {
 
