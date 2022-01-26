@@ -23,15 +23,15 @@
 			<hr/>
 			<form th:action="@{/adminView/usersList/addUserForm/saveUser}" th:object="${user}" method="POST">
 				<p>First Name</p>
-                <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" />
+                <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name"required="" />
 				<th>Last Name</th>
-				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" />
+				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" required=""/>
 				<th>email</th>
-				<input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email." />
+				<input type="email" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email" required=""/>
 				<th>password</th>
-				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
+				<input type="password" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" required=""/>
 				<th>Access Level </th>
-				<input type="text" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="'ADMIN' or 'USER' " />
+				<input type="text" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="'ADMIN' or 'USER' " required=""/>
 				
 				<button type="submit" class="btn btn-primary col-2">Save</button>
 				<input type="hidden" th:field="*{userId}" />
