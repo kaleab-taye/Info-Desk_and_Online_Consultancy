@@ -21,22 +21,17 @@ in addition to the procedural guidance this platform will provide users with the
 
 #The platform will include the following features
 
->>Two types of user(consultants and info-seeking customers)
+>>Two types of user(User and Admin)
 
->>The consultants will have the functionality of CRUD on the data they put on the platform
+>>The users will have the limitted functionality of CRUD on the blogs
 
->>The customers can either access the posted data available or they can get access to contact with the consultants
+>>The customers can either access the posted blogs available or they can write their own blogs to share
 
 >>both users must have an account to access their functionalities but the posted blogs will be accessible for visitors without an account
 
->>the customers and the consultants can send direct messages to admins through telegram API bot for any inquiry suggestion or additional things
+>>a search engine will be available for searching users with their username or email, and blogs with their heading or contents
 
->>a search engine will be available for the info seeking customers
-
->>a commenting section specifically for a blog posted by a consultant will be available for the info-seeking customers in which they will be able to share their experiences during their attempt to accomplish their task
-
->>the customers will have CRUD functionality on the comments they have given
-
+>>admins can access all the users and blogs with full functionality of manipulating them and changing the authorities of users
 
 #We will be using the following to design our platform
 
@@ -55,11 +50,10 @@ in addition to the procedural guidance this platform will provide users with the
 #useage guidlines
 >> users will be directed to the index page as soon as they open site
 >> users can access blogs posted on the site but they need an account to post any new ones
->> it is not possible to have an admin account in the registration so to test that feature a person will need to to insert data on the database manually with the following format      with email address- 'testemail@email.com', and password- 'password' (you need an encryption for the password so it is recomended to use the password and email provided below)
+>> it is not possible to have an admin account in the registration so to test that feature a person will need to to insert data on the database manually with the following format      with email address- 'testemail@email.com', and password- 'password' (you need an encryption for the password so it is recomended to use the password and email provided below) copy and paste the following query in the sql CLI
 >> 
->> INSERT INTO `users` (`first_name`,`last_name`,`email`, `password`, `enabled`) VALUES ('fisrname','lastname','testemail@email.com', '$2a$10$4xZlnU7Gpg/T2c1iCrIU9eZvFmcbE4PIeUAS7dJh/eTS0u2rRfin2', 1);
+>>  insert into users(cred,email,enabled,first_name,last_name,password) values ("ADMIN","admin@email.com",1,"first_n","last_n","$2a$10$EwFYSPbte5L/lhZPyooIJuFdKUHiDu1MrhjPPyt3C2eD87o3IfjWG");
 >> 
->> the password encryption is the following
->> ...
+
 
 
