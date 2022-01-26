@@ -21,16 +21,17 @@
 				</form>
 			</div>
 			<hr/>
-			<form th:action="@{/admin/usersList/addUserForm/saveUser}" th:object="${user}" method="POST">
+			<form th:action="@{/adminView/usersList/addUserForm/saveUser}" th:object="${user}" method="POST">
 				<p>First Name</p>
                 <input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" />
 				<th>Last Name</th>
 				<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" />
-				<th>password</th>
-				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
 				<th>email</th>
 				<input type="text" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email." />
-				<!-- <input type="text" th:field="*{roles}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " /> -->
+				<th>password</th>
+				<input type="text" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" />
+				<th>Access Level </th>
+				<input type="text" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="'ADMIN' or 'USER' " />
 				
 				<button type="submit" class="btn btn-primary col-2">Save</button>
 				<input type="hidden" th:field="*{userId}" />
@@ -41,7 +42,7 @@
 				
 			</form>
 			<hr/>
-			<a th:href="@{/admin/usersList}">Back to list</a>
+			<a th:href="@{/adminView/usersList}">Back to list</a>
 		</div>
 		
 	</body>

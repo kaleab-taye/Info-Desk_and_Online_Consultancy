@@ -33,11 +33,12 @@ public class BlogController {
 		return mav;
 	}
 
-	@GetMapping({"/admin"})
-	public ModelAndView getAdminPage() {
-		ModelAndView mav = new ModelAndView("admin-page");
-		return mav;
+	@GetMapping("/adminView")
+	public String getAdminPage() {
+		return "admin-page";
+	
 	}
+	
 	
 	@GetMapping("/addBlogForm")
 	public ModelAndView addBlogForm() {
@@ -47,7 +48,7 @@ public class BlogController {
 		return mav;
 	}
 
-	@GetMapping("/admin/addBlogForm")
+	@GetMapping("/adminView/addBlogForm")
 	public ModelAndView adminAddBlogForm() {
 		ModelAndView mav = new ModelAndView("admin-add-blog-form");
 		Blog newBlog = new Blog();
@@ -55,22 +56,14 @@ public class BlogController {
 		return mav;
 	}
 
-	@GetMapping({"/admin/blogs-list"})
+	@GetMapping({"/adminView/blogs-list"})
 	public ModelAndView getAdminBlogs() {
 		ModelAndView mav = new ModelAndView("admin-blogs");
 		mav.addObject("blogs", blogRepo.findAll());
 		return mav;
 	}
 
-	
 
-	// @GetMapping("/myblogs")
-	// public ModelAndView myblogs() {
-	// 	ModelAndView mav = new ModelAndView("myblogs");
-	// 	Blog newBlog = blogRepo.findAllById(currentUser).get();
-	// 	mav.addObject("blog", newBlog);
-	// 	return mav;
-	// }
 	
 	@PostMapping("/saveBlog")
 	public String saveBlog(@ModelAttribute Blog blog) {
@@ -78,10 +71,10 @@ public class BlogController {
 		return "redirect:/list";
 	}
 
-	@PostMapping("/admin/saveBlog")
+	@PostMapping("/adminView/saveBlog")
 	public String adminsaveBlog(@ModelAttribute Blog blog) {
 		blogRepo.save(blog);
-		return "redirect:/admin/blogs-list";
+		return "redirect:/adminView/blogs-list";
 	}
 	
 	@GetMapping("/showUpdateForm")
@@ -97,7 +90,7 @@ public class BlogController {
 	// Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 
-	@GetMapping("/admin/showUpdateForm")
+	@GetMapping("/adminView/showUpdateForm")
 	public ModelAndView adminShowUpdateForm(@RequestParam Long blogId) {
 		ModelAndView mav = new ModelAndView("admin-add-blog-form");
 		Blog blog = blogRepo.findById(blogId).get();
@@ -118,10 +111,10 @@ public class BlogController {
 		blogRepo.deleteById(blogId);
 		return "redirect:/list";
 	}
-	@GetMapping("/admin/deleteBlog")
+	@GetMapping("/adminView/deleteBlog")
 	public String adminDeleteBlog(@RequestParam Long blogId) {
 		blogRepo.deleteById(blogId);
-		return "redirect:/admin/blogs-list";
+		return "redirect:/adminView/blogs-list";
 	}
 }
 

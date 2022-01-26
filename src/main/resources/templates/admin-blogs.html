@@ -31,7 +31,7 @@
 			</div>
 			<hr>
 			<div>
-			<a th:href="@{/admin/addBlogForm}" class="btn btn-primary">Add Blog</a>
+			<a th:href="@{/adminView/addBlogForm}" class="btn btn-primary">Add Blog</a>
 			<a th:href="@{/myblogs}" class="btn btn-primary">My Blogs</a>
 			<br>
             <br>
@@ -54,13 +54,15 @@
 						<td th:text="${blog.Heading}">Sample Name</td>
 						<td th:text="${blog.blogContent}" >Sample Blog</td>
 						<td > 
-                            <p th:text="${blog.bloggedDate}"></p>
-                            <p th:text="${blog.blogger}"></p>
+							<p th:text="${blog.bloggedDate}"></p>
+                            <p>blogged by: <span th:text="${blog.bloggerEmail}"> not specified</span></p>
+							<p>blog id: <span th:text="${blog.Id}"> not found</span></p>
+
                         </td>
 						<td>
-							<a th:href="@{/admin/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
+							<a th:href="@{/adminView/showUpdateForm(blogId=${blog.id})}" class="btn btn-info">Update</a>
 							
-							<a th:href="@{/admin/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
+							<a th:href="@{/adminView/deleteBlog(blogId=${blog.id})}" class="btn btn-danger ml-2">Delete</a>
 						</td>
 					</tr>
 				</tbody>

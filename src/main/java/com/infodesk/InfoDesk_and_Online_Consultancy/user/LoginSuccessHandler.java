@@ -26,7 +26,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         if (userDetails.hasCred("USER")) {
             redirectURL = "/list";
         } else if (userDetails.hasCred("ADMIN")) {
-            redirectURL = "/admin";
+            redirectURL = "/adminView";
         }
          
         response.sendRedirect(redirectURL);

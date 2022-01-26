@@ -25,7 +25,7 @@
 					<input type="submit" value="Logout" class=" btn-primary"/>
 				</form>
 			</div>
-			<a th:href="@{/admin/usersList/addUserForm}" class="btn btn-primary">Add User</a>
+			<a th:href="@{/adminView/usersList/addUserForm}" class="btn btn-primary">Add User</a>
 			<br/><br/>
 			<table class="table table-bordered table-striped" id="usersTable">
 			
@@ -45,11 +45,11 @@
 						<td th:text="${user.lastName}">Sample Name</td>
 						<td th:text="${user.email}">Sample Name</td>
 						<td th:text="${user.password}" >Sample Blog</td>
-                        <td >Sample Type</td>
+                        <td th:text="${user.cred}">Sample Type</td>
 						<td>
-							<a th:href="@{/admin/usersList/showUserUpdateForm(userId=${user.userId})}" class="btn btn-info">Alter</a>
+							<a th:href="@{/adminView/usersList/showUserUpdateForm(userId=${user.userId})}" class="btn btn-info">Alter</a>
 							
-							<a th:href="@{/admin/usersList/deleteUser(userId=${user.userId})}" class="btn btn-danger ml-2">Delete</a>
+							<a th:href="@{/adminView/usersList/deleteUser(userId=${user.userId})}" class="btn btn-danger ml-2">Delete</a>
 						</td>
 					</tr>
 				</tbody>

@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
 	private UserRepository userRepo;
 
-    @GetMapping({"/admin/usersList"})
+    @GetMapping({"/adminView/usersList"})
 	public ModelAndView getAllUsers() {
 		ModelAndView mav = new ModelAndView("list-users");
 		mav.addObject("users", userRepo.findAll());
@@ -35,7 +35,7 @@ public class UserController {
 	}
 	
 
-	@GetMapping("/admin/usersList/showUserUpdateForm")
+	@GetMapping("/adminView/usersList/showUserUpdateForm")
 	public ModelAndView showUpdateForm(@RequestParam Long userId) {
 		ModelAndView mav = new ModelAndView("add-user-form");
 		User user = userRepo.findById(userId).get();
@@ -52,15 +52,15 @@ public class UserController {
 	// 	return mav;
 	// }
 
-	@GetMapping("/admin/usersList/deleteUser")
+	@GetMapping("/adminView/usersList/deleteUser")
 	public String deleteBlog(@RequestParam Long userId) {
 		userRepo.deleteById(userId);
-		return "redirect:/admin/usersList";
+		return "redirect:/adminView/usersList";
 	}
 
 	
     
-    @GetMapping("/admin/usersList/addUserForm")
+    @GetMapping("/adminView/usersList/addUserForm")
 	public ModelAndView addUserForm() {
 		ModelAndView mav = new ModelAndView("add-user-form");
 		User newUser = new User();
@@ -68,13 +68,13 @@ public class UserController {
 		return mav;
 	}
 
-    @PostMapping("/admin/usersList/addUserForm/saveUser")
+    @PostMapping("/adminView/usersList/addUserForm/saveUser")
 	public String saveBlog(@ModelAttribute User user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 		userRepo.save(user);
-		return "redirect:/admin/usersList";
+		return "redirect:/adminView/usersList";
 	}
 
 
