@@ -32,6 +32,12 @@ public class BlogController {
 		mav.addObject("blogs", blogRepo.findAll());
 		return mav;
 	}
+
+	@GetMapping({"/admin"})
+	public ModelAndView getAdminPage() {
+		ModelAndView mav = new ModelAndView("admin-page");
+		return mav;
+	}
 	
 	@GetMapping("/addBlogForm")
 	public ModelAndView addBlogForm() {

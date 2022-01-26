@@ -67,5 +67,9 @@ public class MyUserDetails implements UserDetails {
     public boolean hasRole(String roleName) {
         return this.user.hasRole(roleName);
     }
+
+    public boolean hasCred(String roleName) {
+        return this.user.hasCred(roleName);
+    }
      
 }

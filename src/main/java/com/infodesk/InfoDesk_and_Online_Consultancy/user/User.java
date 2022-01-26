@@ -16,11 +16,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import javax.validation.constraints.Email;
+// import javax.validation.constraints.Email;
 // import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+// import javax.validation.constraints.NotEmpty;
+// import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -89,7 +89,10 @@ public class User {
             )
     @Column (columnDefinition = "varchar(10) default 'USER'")
     private Set<Role> roles = new HashSet<>();
- 
+    
+    @Column (columnDefinition = "varchar(10) default 'USER'")
+    public String cred;
+
     public boolean hasRole(String roleName) {
         Iterator<Role> iterator = this.roles.iterator();
         while (iterator.hasNext()) {
@@ -97,6 +100,16 @@ public class User {
             if (role.getName().equals(roleName)) {
                 return true;
             }
+        }
+         
+        return false;
+    }
+
+    public boolean hasCred(String roleName) {
+       
+            if (cred.equals(roleName)) {
+                return true;
+            
         }
          
         return false;

@@ -21,11 +21,12 @@
 		<th>Last Name</th>
 		<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" required=""/>
 		<!-- <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td> -->
-		<th>Password</th>
-		<input type="password" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" required=""/>
 		<th>Email</th>
 		<input type="email" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email" required=""/>
-		<!-- <input type="text" th:field="*{roles}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " /> -->
+
+		<th>Password</th>
+		<input type="password" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" required=""/>
+		<input type="text" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " />
 
 		<input type="submit" class="btn btn-primary col-2" value="SIGNUP"/>
 		<input type="hidden" th:field="*{userId}" />
