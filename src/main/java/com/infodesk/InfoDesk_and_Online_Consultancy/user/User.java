@@ -91,7 +91,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
     
     @Column (columnDefinition = "varchar(10) default 'USER'")
-    public String cred;
+    public String cred = "USER";
 
     public boolean hasRole(String roleName) {
         Iterator<Role> iterator = this.roles.iterator();

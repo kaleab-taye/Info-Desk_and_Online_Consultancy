@@ -26,7 +26,12 @@
 
 		<th>Password</th>
 		<input type="password" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" required=""/>
-		<input type="text" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " required=""/>
+		
+		<th>Phone No</th>
+		<input type="string" th:field="*{phoneNo}" class="form-control col-4 mb-4" placeholder="Phone No" />
+
+		
+		<!-- <input type="hidden" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " th:value="${USER}" /> -->
 
 		<input type="submit" class="btn btn-primary col-2" value="SIGNUP"/>
 		<input type="hidden" th:field="*{userId}" />
