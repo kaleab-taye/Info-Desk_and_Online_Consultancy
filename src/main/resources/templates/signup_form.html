@@ -1,46 +1,53 @@
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-	<title>Register User</title>
-
-	<link rel="stylesheet"
-		  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-		  integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-		  crossorigin="anonymous" />
-</head>
-<body>
-
-<div class="container">
-
-	<h3>Sign Up Form</h3>
-
-	<hr/>
-	<form  action="#" th:action="@{/newRegisteredUser}" th:object="${user}" method="POST">
-		<p>First Name</p>
-		<input type="text" th:field="*{firstName}" class="form-control col-4 mb-4" placeholder="First Name" required="" />
-		<th>Last Name</th>
-		<input type="text" th:field="*{lastName}" class="form-control col-4 mb-4" placeholder="Last Name" required=""/>
-		<!-- <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td> -->
-		<th>Email</th>
-		<input type="email" th:field="*{email}" class="form-control col-4 mb-4" placeholder="Email" required=""/>
-
-		<th>Password</th>
-		<input type="password" th:field="*{password}" class="form-control col-4 mb-4" placeholder="Password" required=""/>
-<!-- 		
-		<th>Phone No</th>
-		<input type="tel" th:field="*{phoneNo}" class="form-control col-4 mb-4" placeholder="Phone No" /> -->
-
-		
-		<!-- <input type="hidden" th:field="*{cred}" class="form-control col-4 mb-4" placeholder="Access Level 'ADMIN' or 'USER' " th:value="${USER}" /> -->
-
-		<input type="submit" class="btn btn-primary col-2" value="SIGNUP"/>
-		<input type="hidden" th:field="*{userId}" />
-		<!-- <input type="hidden" th:field="*{blogger}" />
-        <input type="hidden" th:field="*{bloggedDate}" /> -->
-
-	</form>
-	<hr/>
-</div>
-
-</body>
-</html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Sign Up</title>
+	
+		<link th:href="@{/fonts/material-icon/css/material-design-iconic-font.min.css}" rel="stylesheet">
+	
+		<link th:href="@{/css/style.css}" rel="stylesheet">
+	</head>
+	<body>
+	
+		<div class="main">
+			<section class="signup">
+				<div class="container">
+					<div class="signup-content">
+						<div class="signup-form">
+							<h2 class="form-title">Sign up</h2>
+							<form class="register-form" id="register-form" action="#" th:action="@{/newRegisteredUser}" th:object="${user}" method="POST">
+								<div class="form-group">
+									<label for="firstName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+									<input type="text" th:field="*{firstName}" name="firstName" placeholder="First Name" required="" />
+								</div>
+								<div class="form-group">
+									<label for="lastName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+									<input type="text" name="lastName" th:field="*{lastName}" placeholder="Last Name" required="" />
+								</div>
+								<div class="form-group">
+									<label for="email"><i class="zmdi zmdi-email"></i></label>
+									<input type="email" name="email" th:field="*{email}" placeholder="Your Email" required="" />
+								</div>
+								<div class="form-group">
+									<label for="pass"><i class="zmdi zmdi-lock"></i></label>
+									<input type="password" name="pass" th:field="*{password}" placeholder="Password" required="" />
+								</div>
+								<div class="form-group form-button">
+									<input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+								</div>
+							</form>
+						</div>
+						<div class="signup-image">
+							<figure><img th:src="@{/images/signup-image.jpg}" alt="sing up image"></figure>
+							<a th:href="@{/login}" class="signup-image-link">I am already member</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script th:src="@{/js/main.js}"></script>
+	</body>
+	</html>
