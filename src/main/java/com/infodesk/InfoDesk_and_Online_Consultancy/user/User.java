@@ -69,10 +69,10 @@ public class User {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @Column(name = "full_name", nullable = true, length = 20)
-    private String fullName = firstName + " " + lastName;
+    // @Column(name = "full_name", nullable = true, length = 20)
+    // private String fullName = firstName + " " + lastName;
 
-    private String phoneNo;
+    // private String phoneNo;
     private String type;
 
     // public static Long currentUser ;
